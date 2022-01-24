@@ -1,0 +1,43 @@
+﻿@page "/getpudata"
+
+<PageTitle>PU</PageTitle>
+
+@using Plat.Blazor.Data
+
+<h1>获取PU数据</h1>
+
+<p>使用dynamic和dapper通过sql语句获取数据</p>
+
+@if (pus == null)
+{
+    <p><em>加载......</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>编码</th>
+                <th>名称</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pu in pus)
+            {
+                <tr>
+                    <td>@pu.PU_BM</td>
+                    <td>@pu.PU_NAME</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<dynamic> pus;
+
+    protected override async Task OnInitializedAsync()
+    {
+        pus = PuService.QueryIn();
+    }
+}
