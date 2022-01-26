@@ -3,7 +3,7 @@
 <PageTitle>PU</PageTitle>
 
 @using Plat.Blazor.Data
-
+@inject DapperService service
 <h1>获取PU数据</h1>
 
 <p>使用dynamic和dapper通过sql语句获取数据</p>
@@ -38,6 +38,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        pus = PuService.QueryIn();
+        pus = service.QueryPu();
     }
 }
