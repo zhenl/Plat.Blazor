@@ -16,7 +16,7 @@ namespace Plat.Blazor.Data
         {
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                var sql = "select * from SUF_PROGRAMUNIT_TB";
+                var sql = "select * from AspNetUsers";
                 //参数类型是Array的时候，dappper会自动将其转化
                 return connection.Query<dynamic>(sql).ToList();
             }
