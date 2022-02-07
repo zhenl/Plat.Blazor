@@ -37,6 +37,12 @@ else
     app.UseHsts();
 }
 
+var pathbase = builder.Configuration["PathBase"];
+if (!string.IsNullOrEmpty(pathbase))
+{
+    app.UsePathBase(pathbase);
+}
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
